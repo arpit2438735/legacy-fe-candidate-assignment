@@ -1,0 +1,117 @@
+# Setup Guide - Web3 Message Signer & Verifier
+
+This guide will help you set up and run the full-stack Web3 Message Signer application.
+
+## 📋 Prerequisites
+
+- Node.js 18+ installed
+- npm or yarn package manager
+- A Dynamic.xyz account and Environment ID
+
+## 🔑 Getting Dynamic.xyz Credentials
+
+1. Go to [Dynamic.xyz](https://www.dynamic.xyz/) and sign up for a free account
+2. Create a new project
+3. Navigate to your project dashboard
+4. Copy your **Environment ID** (you'll need this for the frontend `.env` file)
+5. Make sure to enable **Email Authentication** in your Dynamic.xyz dashboard settings
+
+## 🚀 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd legacy-fe-candidate-assignment
+```
+
+### 2. Frontend Setup
+
+```bash
+# Navigate to frontend directory (from project root)
+cd frontend
+
+# Install dependencies
+npm install
+
+# Create .env file from example
+cp .env.example .env
+
+# Edit .env file and add your Dynamic.xyz Environment ID:
+# VITE_DYNAMIC_ENVIRONMENT_ID=your_actual_environment_id_here
+# VITE_API_URL=http://localhost:3001
+```
+
+**Important:** Replace `your_actual_environment_id_here` with your actual Dynamic.xyz Environment ID.
+
+## 🏃 Running the Application
+
+You'll need to run both the frontend servers.
+
+### Terminal 1 - Frontend Server
+
+```bash
+cd frontend
+npm run dev
+```
+
+The frontend will start on `http://localhost:5173` (or another port if 5173 is busy)
+
+## 🎯 Using the Application
+
+1. Open your browser and navigate to `http://localhost:5173`
+2. You'll see the authentication page
+3. Click "Connect Wallet" to trigger Dynamic.xyz authentication flow
+4. Follow the Dynamic.xyz authentication steps (email verification)
+5. Once authenticated, you'll see your connected wallet address
+
+## 📝 Current Features
+
+- ✅ Dynamic.xyz headless embedded wallet integration
+- ✅ Email-based authentication flow
+- ✅ Connected wallet address display
+- ✅ Clean, modern UI with gradient design
+- ✅ Disconnect wallet functionality
+
+## 🔜 Coming Next
+
+- ⏳ Message signing interface
+- ⏳ Backend signature verification
+- ⏳ Message history tracking
+- ⏳ Multi-factor authentication
+
+## 🐛 Troubleshooting
+
+### Dynamic.xyz Environment ID Error
+
+If you see "VITE_DYNAMIC_ENVIRONMENT_ID is not set", make sure:
+- You created the `.env` file in the `frontend` directory
+- The environment ID is correctly copied from your Dynamic.xyz dashboard
+- You restarted the frontend dev server after creating/editing the `.env` file
+
+### Backend Connection Issues
+
+If the frontend can't connect to the backend:
+- Ensure the backend server is running on port 3001
+- Check that `VITE_API_URL` in frontend `.env` matches the backend URL
+- Verify no firewall is blocking port 3001
+
+### CORS Issues
+
+The backend is configured to accept requests from any origin during development. If you encounter CORS issues in production, you'll need to configure the allowed origins in `backend/src/index.ts`.
+
+## 🧪 Testing
+
+Tests will be added in a future PR. Test suite will include:
+- Frontend component tests
+- Backend API endpoint tests
+- Integration tests for signature verification
+
+## 🚀 Deployment
+
+Deployment configuration for Vercel will be added in a future PR.
+
+## 📄 License
+
+MIT
+
