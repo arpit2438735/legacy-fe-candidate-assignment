@@ -21,15 +21,34 @@ This guide will help you set up and run the full-stack Web3 Message Signer appli
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone git@github.com:arpit2438735/legacy-fe-candidate-assignment.git
 cd legacy-fe-candidate-assignment
 ```
 
-### 2. Frontend Setup
+### 2. Backend Setup
+
+```bash
+# Navigate to backend directory (from project root)
+cd backend
+
+# Install dependencies
+npm install
+
+# Create .env file from example
+cp .env.example .env
+
+# The .env file should contain:
+# PORT=3001
+
+# Build the TypeScript code (optional for development)
+npm run build
+```
+
+### 3. Frontend Setup
 
 ```bash
 # Navigate to frontend directory (from project root)
-cd frontend
+cd ../frontend
 
 # Install dependencies
 npm install
@@ -46,9 +65,20 @@ cp .env.example .env
 
 ## 🏃 Running the Application
 
-You'll need to run both the frontend servers.
+You'll need to run both the backend and frontend servers in separate terminals.
 
-### Terminal 1 - Frontend Server
+### Terminal 1 - Backend Server
+
+```bash
+cd backend
+npm run dev
+```
+
+The backend will start on `http://localhost:3001`
+
+You should see: `🚀 Backend server running on port 3001`
+
+### Terminal 2 - Frontend Server
 
 ```bash
 cd frontend
@@ -59,19 +89,52 @@ The frontend will start on `http://localhost:5173` (or another port if 5173 is b
 
 ## 🎯 Using the Application
 
-1. Open your browser and navigate to `http://localhost:5173`
-2. You'll see the authentication page
-3. Click "Connect Wallet" to trigger Dynamic.xyz authentication flow
-4. Follow the Dynamic.xyz authentication steps (email verification)
-5. Once authenticated, you'll see your connected wallet address
+### Starting the App
+
+1. **Start the backend server** in Terminal 1 (`cd backend && npm run dev`)
+2. **Start the frontend server** in Terminal 2 (`cd frontend && npm run dev`)
+3. Open your browser and navigate to `http://localhost:5173`
+4. You'll see the authentication page
+5. Click "Connect Wallet" to trigger Dynamic.xyz authentication flow
+6. Follow the Dynamic.xyz authentication steps (email verification)
+7. Once authenticated, you'll see your connected wallet address
+
+### Testing the Backend API
+
+You can test the backend API independently using curl or Postman:
+
+```bash
+# Health check
+curl http://localhost:3001/health
+
+# Test signature verification (example)
+curl -X POST http://localhost:3001/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "Hello Web3",
+    "signature": {
+      "signature": "0x...",
+      "address": "0x..."
+    }
+  }'
+```
 
 ## 📝 Current Features
 
+### Frontend
 - ✅ Dynamic.xyz headless embedded wallet integration
 - ✅ Email-based authentication flow
 - ✅ Connected wallet address display
 - ✅ Clean, modern UI with gradient design
 - ✅ Disconnect wallet functionality
+
+### Backend
+- ✅ Express server with TypeScript
+- ✅ POST /verify-signature endpoint for signature verification
+- ✅ GET /health endpoint for health checks
+- ✅ Signature verification using viem library
+- ✅ CORS enabled for frontend communication
+- ✅ Error handling and validation
 
 ## 🔜 Coming Next
 
@@ -99,6 +162,35 @@ If the frontend can't connect to the backend:
 ### CORS Issues
 
 The backend is configured to accept requests from any origin during development. If you encounter CORS issues in production, you'll need to configure the allowed origins in `backend/src/index.ts`.
+
+## 📦 Project Structure
+
+```
+legacy-fe-candidate-assignment/
+├── frontend/                   # React + TypeScript + Vite
+│   ├── src/
+│   │   ├── components/        # React components
+│   │   │   ├── Auth/         # Authentication components
+│   │   │   └── Dashboard/    # Dashboard components
+│   │   ├── contexts/         # React contexts (Dynamic.xyz wrapper)
+│   │   ├── types/            # TypeScript type definitions
+│   │   ├── App.tsx           # Main App component
+│   │   └── main.tsx          # Entry point
+│   ├── .env.example          # Environment variables template
+│   └── package.json
+│
+├── backend/                    # Node.js + Express + TypeScript
+│   ├── src/
+│   │   └── index.ts          # Express server with verification endpoint
+│   ├── .env.example          # Environment variables template
+│   ├── tsconfig.json         # TypeScript configuration
+│   └── package.json
+│
+├── .gitignore                 # Git ignore rules
+├── vercel.json                # Vercel deployment configuration
+├── SETUP.md                   # This file - setup instructions
+└── README.md                  # Assignment requirements
+```
 
 ## 🧪 Testing
 
