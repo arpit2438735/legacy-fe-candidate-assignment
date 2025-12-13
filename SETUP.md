@@ -136,13 +136,6 @@ curl -X POST http://localhost:3001/verify-signature \
 - ✅ CORS enabled for frontend communication
 - ✅ Error handling and validation
 
-## 🔜 Coming Next
-
-- ⏳ Message signing interface
-- ⏳ Backend signature verification
-- ⏳ Message history tracking
-- ⏳ Multi-factor authentication
-
 ## 🐛 Troubleshooting
 
 ### Dynamic.xyz Environment ID Error
@@ -175,17 +168,6 @@ npm test              # Run all tests
 npm run test:watch    # Run tests in watch mode
 npm run test:coverage # Run tests with coverage report
 ```
-
-**Test Results:** ✅ 10 tests passing
-
-**Test Coverage:**
-- Health check endpoint (2 tests)
-- Signature verification with valid signatures (1 test)
-- Signature verification with invalid signatures (1 test)
-- Error handling for verification failures (1 test)
-- Request validation (3 tests)
-- Message preservation (1 test)
-- 404 handling (1 test)
 
 ## 🚀 Deployment
 
