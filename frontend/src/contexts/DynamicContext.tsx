@@ -23,16 +23,17 @@ export const useDynamicWallet = () => useContext(WalletContext);
 
 // Inner component that accesses Dynamic SDK
 const WalletStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { primaryWallet, isAuthenticated, user } = useDynamicSDK();
+  const { primaryWallet } = useDynamicSDK();
   const [userAddress, setUserAddress] = useState<string | null>(null);
+  const isAuthenticated = !!primaryWallet;
 
   useEffect(() => {
-    if (primaryWallet && isAuthenticated) {
+    if (primaryWallet) {
       setUserAddress(primaryWallet.address || null);
     } else {
       setUserAddress(null);
     }
-  }, [primaryWallet, isAuthenticated]);
+  }, [primaryWallet]);
 
   return (
     <WalletContext.Provider 

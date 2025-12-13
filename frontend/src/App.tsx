@@ -4,11 +4,11 @@ import { Dashboard } from './components/Dashboard/Dashboard';
 import './App.css';
 
 function App() {
-  const { isAuthenticated } = useDynamicContext();
+  const { primaryWallet } = useDynamicContext();
 
   return (
     <div className="app">
-      {!isAuthenticated ? <HeadlessAuth /> : <Dashboard />}
+      {!primaryWallet ? <HeadlessAuth /> : <Dashboard />}
     </div>
   );
 }
