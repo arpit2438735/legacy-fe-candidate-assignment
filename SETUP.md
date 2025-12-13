@@ -163,41 +163,29 @@ If the frontend can't connect to the backend:
 
 The backend is configured to accept requests from any origin during development. If you encounter CORS issues in production, you'll need to configure the allowed origins in `backend/src/index.ts`.
 
-## 📦 Project Structure
-
-```
-legacy-fe-candidate-assignment/
-├── frontend/                   # React + TypeScript + Vite
-│   ├── src/
-│   │   ├── components/        # React components
-│   │   │   ├── Auth/         # Authentication components
-│   │   │   └── Dashboard/    # Dashboard components
-│   │   ├── contexts/         # React contexts (Dynamic.xyz wrapper)
-│   │   ├── types/            # TypeScript type definitions
-│   │   ├── App.tsx           # Main App component
-│   │   └── main.tsx          # Entry point
-│   ├── .env.example          # Environment variables template
-│   └── package.json
-│
-├── backend/                    # Node.js + Express + TypeScript
-│   ├── src/
-│   │   └── index.ts          # Express server with verification endpoint
-│   ├── .env.example          # Environment variables template
-│   ├── tsconfig.json         # TypeScript configuration
-│   └── package.json
-│
-├── .gitignore                 # Git ignore rules
-├── vercel.json                # Vercel deployment configuration
-├── SETUP.md                   # This file - setup instructions
-└── README.md                  # Assignment requirements
-```
-
 ## 🧪 Testing
 
-Tests will be added in a future PR. Test suite will include:
-- Frontend component tests
-- Backend API endpoint tests
-- Integration tests for signature verification
+### Backend Tests (Jest)
+
+The backend includes comprehensive Jest tests with proper mocking of external dependencies.
+
+```bash
+cd backend
+npm test              # Run all tests
+npm run test:watch    # Run tests in watch mode
+npm run test:coverage # Run tests with coverage report
+```
+
+**Test Results:** ✅ 10 tests passing
+
+**Test Coverage:**
+- Health check endpoint (2 tests)
+- Signature verification with valid signatures (1 test)
+- Signature verification with invalid signatures (1 test)
+- Error handling for verification failures (1 test)
+- Request validation (3 tests)
+- Message preservation (1 test)
+- 404 handling (1 test)
 
 ## 🚀 Deployment
 
