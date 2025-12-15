@@ -37,6 +37,11 @@ export const MessageSigner: React.FC<MessageSignerProps> = ({ onMessageSigned })
       const signature = await primaryWallet.signMessage(message);
       const address = primaryWallet.address;
 
+      if (!signature || !address) {
+        setError('Failed to sign message or get wallet address');
+        return;
+      }
+
       // Verify the signature with backend
       const verificationResult = await verifySignature(message, signature, address);
 
