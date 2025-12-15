@@ -2,6 +2,21 @@
 
 This guide will help you set up and run the full-stack Web3 Message Signer application.
 
+## 🌐 Live Demo
+
+**✅ Deployment Completed!**
+
+The application is live and deployed on Vercel:
+
+🔗 **[Visit Live Application](https://legacy-fe-candidate-assignment-test.vercel.app/)**
+
+Try it out:
+1. Click the link above
+2. Connect your wallet using Dynamic.xyz email authentication
+3. Sign a custom message
+4. View the signature verification results
+5. Check your message history
+
 ## 📋 Prerequisites
 
 - Node.js 18+ installed
@@ -182,7 +197,9 @@ npm run test:coverage # Run tests with coverage report
 
 ## 🚀 Deployment
 
-Deployment configuration for Vercel will be added in a future PR.
+**Status: ✅ Deployed to Vercel**
+
+**Live Application:** [https://legacy-fe-candidate-assignment-test.vercel.app/](https://legacy-fe-candidate-assignment-test.vercel.app/)
 
 ## 📄 License
 
