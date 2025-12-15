@@ -3,10 +3,6 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "vite",
-  "env": {
-    "VITE_DYNAMIC_ENVIRONMENT_ID": "@dynamic-environment-id",
-    "VITE_API_URL": "@api-url"
-  }
+  "framework": "vite"
 }
 
