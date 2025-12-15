@@ -201,6 +201,77 @@ npm run test:coverage # Run tests with coverage report
 
 **Live Application:** [https://legacy-fe-candidate-assignment-test.vercel.app/](https://legacy-fe-candidate-assignment-test.vercel.app/)
 
+## 📝 Trade-offs & Future Improvements
+
+### Current Limitations & Trade-offs
+
+**1. Test Coverage**
+- **Current State**: Frontend has few tests covering critical paths
+- **Trade-off**: Focused on core functionality (API service, MessageHistory component) rather than 100% coverage
+- **Future Improvement**: Add comprehensive test coverage including:
+  - MessageSigner component tests
+  - Dashboard component integration tests
+  - E2E tests with Playwright or Cypress
+  - Target: 80%+ code coverage
+
+**2. Message History Storage**
+- **Current State**: localStorage for persistence
+- **Trade-off**: Client-side only, data lost if localStorage is cleared
+- **Future Improvement**: 
+  - Backend database integration (PostgreSQL/MongoDB)
+  - User-specific message history with authentication
+  - Cross-device synchronization
+
+**3. Error Handling**
+- **Current State**: Basic try-catch with user-friendly error messages
+- **Trade-off**: Generic error messages, limited error tracking
+- **Future Improvement**:
+  - Detailed error logging with Sentry or similar
+  - Specific error messages for different failure types
+  - Retry mechanisms for transient failures
+  - Toast notifications for better UX
+
+**4. Security**
+- **Current State**: Basic CORS configuration, signature verification
+- **Trade-off**: Open CORS in development, no rate limiting
+- **Future Improvement**:
+  - Rate limiting on API endpoints
+  - Request validation middleware
+  - API key authentication
+  - Input sanitization
+
+**5. Performance**
+- **Current State**: Basic optimization, no caching
+- **Trade-off**: Simple implementation, may not handle high load
+- **Future Improvement**:
+  - Redis caching for verification results
+  - API response caching
+  - Code splitting and lazy loading
+  - CDN for static assets
+
+**6. Accessibility**
+- **Current State**: Basic semantic HTML
+- **Trade-off**: Not fully WCAG compliant
+- **Future Improvement**:
+  - Full keyboard navigation
+  - ARIA labels and roles
+
+**8. Mobile Experience**
+- **Current State**: Responsive CSS, basic mobile support
+- **Trade-off**: Desktop-first approach
+- **Future Improvement**:
+  - Mobile-first design
+  - Touch gesture support
+  - Native mobile app consideration
+
+**9. Analytics & Monitoring**
+- **Current State**: No analytics or monitoring
+- **Trade-off**: No visibility into user behavior or errors
+- **Future Improvement**:
+  - Google Analytics
+  - Error tracking with Sentry
+  - User behavior tracking
+
 ## 📄 License
 
 MIT
