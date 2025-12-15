@@ -169,6 +169,17 @@ npm run test:watch    # Run tests in watch mode
 npm run test:coverage # Run tests with coverage report
 ```
 
+### Frontend Tests (Jest + React Testing Library)
+
+The frontend uses Jest with React Testing Library for component and integration testing.
+
+```bash
+cd frontend
+npm test              # Run all tests
+npm run test:watch    # Run tests in watch mode
+npm run test:coverage # Run tests with coverage report
+```
+
 ## 🚀 Deployment
 
 Deployment configuration for Vercel will be added in a future PR.
